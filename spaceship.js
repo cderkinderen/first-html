@@ -1,7 +1,15 @@
-function createHeading () {
+const inputElement = document.getElementById("my-input");
+inputElement.onkeyup = function (inputEvent){
+    console.log('keyUp', 'inputEvent', inputEvent.target.value)
+    createHeading(inputEvent.target.value)
+}
+
+const myDog = 'woof';
+
+function createHeading (content) {
     // create an element and give it content (declarative)
     var headingOne = document.createElement("h1")
-    headingOne.innerHTML = "Pat is busting for a piss"
+    headingOne.innerHTML = content
 
     // create a variable, retrieve elements that are called body
     var listOfBodyElements = document.getElementsByTagName("body")
@@ -10,8 +18,22 @@ function createHeading () {
     // add the heading to the body
     body.appendChild(headingOne)
 }
-createHeading ()
-createHeading ()
+createHeading ('Pat is busting for a piss right now')
+createHeading ('Poppy is outside')
+
+//Find the <h2> in the document
+//Save that in a variable
+const listOfHeadingTwoElements = document.getElementsByTagName("h2");
+
+//access the onclick property
+//assign our function (please put something into the name)
+const firstHeadingTwo = listOfHeadingTwoElements[0];
+firstHeadingTwo.onclick = createHeading;
+
+
+
+
+//a variable is an access point for some data (an alias)
 
 //A function is a reuseable block of code
 //whenever we see a parenthisis after a word we are callign a fucntion
@@ -22,3 +44,4 @@ createHeading ()
 // printHi()
 // printHi()
 // printHi()
+// JS is event driven e.g. User entering in text, clicking a button, scrolling the page, resizing the column etc
