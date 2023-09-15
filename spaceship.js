@@ -1,7 +1,11 @@
-const inputElement = document.getElementById("my-input");
-inputElement.onkeyup = function (inputEvent){
-    console.log('keyUp', 'inputEvent', inputEvent.target.value)
-    createHeading(inputEvent.target.value)
+
+let myEvent;
+const resultOfForm = document.getElementById("my-form");
+resultOfForm.onsubmit = function (event){
+    event.preventDefault()
+    console.log('submit', event.target[0].value)
+    createHeading(event.target[0].value)
+    myEvent = event
 }
 
 const myDog = 'woof';
