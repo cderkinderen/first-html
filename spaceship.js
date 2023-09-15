@@ -4,11 +4,35 @@ const resultOfForm = document.getElementById("my-form");
 resultOfForm.onsubmit = function (event){
     event.preventDefault()
     console.log('submit', event.target[0].value)
-    createHeading(event.target[0].value)
+    createListItem(event.target[0].value)
     myEvent = event
 }
 
 const myDog = 'woof';
+
+function createListItem (content) {
+    const id = content.split(' ').join('-')
+    const ul = document.getElementById('to-do-list')    
+    //Create LI 
+    const li = document.createElement("li")
+    //create checkbox
+    const checkbox = document.createElement('input')
+    checkbox.setAttribute('type', 'checkbox')
+    checkbox.setAttribute('id', id)
+    //create label
+    const label = document.createElement('label')
+    label.setAttribute('for', id)
+    label.innerHTML = content
+    //attach the checkbox to the LI
+    li.appendChild(checkbox)
+    //attach the label to the LI
+    li.appendChild(label)
+    //attach the LI to the list
+    ul.appendChild(li)
+
+}
+
+
 
 function createHeading (content) {
     // create an element and give it content (declarative)
