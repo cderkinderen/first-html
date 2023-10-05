@@ -1,14 +1,10 @@
+// element cache
+const Form = document.getElementById("my-form");
 
-let myEvent;
-const resultOfForm = document.getElementById("my-form");
-resultOfForm.onsubmit = function (event){
-    event.preventDefault()
-    console.log('submit', event.target[0].value)
-    createListItem(event.target[0].value)
-    myEvent = event
-}
+const input = document.getElementById("my-input");
 
-const myDog = 'woof';
+
+
 
 function createListItem (content) {
     const id = content.split(' ').join('-')
@@ -32,31 +28,36 @@ function createListItem (content) {
 
 }
 
-
-
-function createHeading (content) {
-    // create an element and give it content (declarative)
-    var headingOne = document.createElement("h1")
-    headingOne.innerHTML = content
-
-    // create a variable, retrieve elements that are called body
-    var listOfBodyElements = document.getElementsByTagName("body")
-    // get the first item from the list (The body element)
-    var body = listOfBodyElements[0]
-    // add the heading to the body
-    body.appendChild(headingOne)
+Form.onsubmit = function (event){
+    event.preventDefault()
+    console.log('submit', event.target[0].value)
+    createListItem(event.target[0].value)
+    input.value = "";
 }
-createHeading ('Pat is busting for a piss right now')
-createHeading ('Poppy is outside')
 
-//Find the <h2> in the document
-//Save that in a variable
-const listOfHeadingTwoElements = document.getElementsByTagName("h2");
+// function createHeading (content) {
+//     // create an element and give it content (declarative)
+//     var headingOne = document.createElement("h1")
+//     headingOne.innerHTML = content
 
-//access the onclick property
-//assign our function (please put something into the name)
-const firstHeadingTwo = listOfHeadingTwoElements[0];
-firstHeadingTwo.onclick = createHeading;
+//     // create a variable, retrieve elements that are called body
+//     var listOfBodyElements = document.getElementsByTagName("body")
+//     // get the first item from the list (The body element)
+//     var body = listOfBodyElements[0]
+//     // add the heading to the body
+//     body.appendChild(headingOne)
+// }
+// createHeading ('Pat is busting for a piss right now')
+// createHeading ('Poppy is outside')
+
+// //Find the <h2> in the document
+// //Save that in a variable
+// const listOfHeadingTwoElements = document.getElementsByTagName("h2");
+
+// //access the onclick property
+// //assign our function (please put something into the name)
+// const firstHeadingTwo = listOfHeadingTwoElements[0];
+// firstHeadingTwo.onclick = createHeading;
 
 
 
