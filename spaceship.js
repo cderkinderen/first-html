@@ -3,8 +3,27 @@ const Form = document.getElementById("my-form");
 
 const input = document.getElementById("my-input");
 
+// example to do model
 
+const toDoNumberOne = {
+    content: 'Take out the rubbish bin',
+    isComplete: true
+}
 
+const toDoNumberTwo = {
+    content: 'Do a poo',
+    isComplete: false
+}
+
+const allToDos = [
+    toDoNumberOne, 
+    toDoNumberTwo,
+    {
+        content: 'Do more paired programming',
+        isComplete: false
+    }
+]
+// TODO: Render all to dos as HTML
 
 function createListItem (content) {
     const id = content.split(' ').join('-')
