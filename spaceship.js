@@ -7,7 +7,7 @@ const input = document.getElementById("my-input");
 
 const toDoNumberOne = {
     content: 'Take out the rubbish bin',
-    isComplete: true
+    isComplete: false
 }
 
 const toDoNumberTwo = {
@@ -24,8 +24,11 @@ const allToDos = [
     }
 ]
 // TODO: Render all to dos as HTML
-
-function createListItem (content) {
+allToDos.forEach(function toDoListItem(toDo) {
+    createListItem(toDo.content, toDo.isComplete)
+}) 
+function createListItem (content, isChecked) {
+    console.log('createListItem', content, isChecked)
     const id = content.split(' ').join('-')
     const ul = document.getElementById('to-do-list')    
     //Create LI 
@@ -34,6 +37,9 @@ function createListItem (content) {
     const checkbox = document.createElement('input')
     checkbox.setAttribute('type', 'checkbox')
     checkbox.setAttribute('id', id)
+    if (isChecked) {
+        checkbox.setAttribute('checked', isChecked)
+    }
     //create label
     const label = document.createElement('label')
     label.setAttribute('for', id)
