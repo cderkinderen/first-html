@@ -1,6 +1,6 @@
 // element cache
 const Form = document.getElementById("my-form");
-
+const ul = document.getElementById('to-do-list');    
 const input = document.getElementById("my-input");
 
 // example to do model
@@ -23,14 +23,13 @@ const allToDos = [
         isComplete: false
     }
 ]
-// TODO: Render all to dos as HTML
-allToDos.forEach(function toDoListItem(toDo) {
-    createListItem(toDo.content, toDo.isComplete)
-}) 
+// TODO: Submiting a to do should add it to the list in Javascript. To add it to the page we should re-render the list.
+renderList();
+
 function createListItem (content, isChecked) {
     console.log('createListItem', content, isChecked)
     const id = content.split(' ').join('-')
-    const ul = document.getElementById('to-do-list')    
+
     //Create LI 
     const li = document.createElement("li")
     //create checkbox
@@ -53,12 +52,28 @@ function createListItem (content, isChecked) {
 
 }
 
+function renderList(){
+    ul.innerHTML = ''
+    allToDos.forEach(function toDoListItem(toDo) {
+        createListItem(toDo.content, toDo.isComplete)
+    })    
+}
+
 Form.onsubmit = function (event){
     event.preventDefault()
     console.log('submit', event.target[0].value)
-    createListItem(event.target[0].value)
+// add new todo to Javascript list
+    allToDos.push({
+        content: event.target[0].value,
+        isComplete: false
+    })
+        
+
+    renderList()
+
     input.value = "";
 }
+//TODO: filter list and rendre complete todos
 
 // function createHeading (content) {
 //     // create an element and give it content (declarative)
