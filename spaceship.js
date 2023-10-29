@@ -2,8 +2,15 @@
 const Form = document.getElementById("my-form");
 const ul = document.getElementById('to-do-list');    
 const input = document.getElementById("my-input");
+const select = document.getElementById("filter");
+
+//TODO: filter list and render complete todos
+const ALL = 'ALL';
+const COMPLETED = 'COMPLETED';
+const ACTIVE = 'ACTIVE';
 
 // example to do model
+let filter = ALL
 
 const toDoNumberOne = {
     content: 'Take out the rubbish bin',
@@ -73,7 +80,14 @@ Form.onsubmit = function (event){
 
     input.value = "";
 }
-//TODO: filter list and rendre complete todos
+
+select.onchange = function (event){
+    filter = event.target.value;
+}
+
+
+
+
 
 // function createHeading (content) {
 //     // create an element and give it content (declarative)
