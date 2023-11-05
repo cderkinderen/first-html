@@ -10,11 +10,11 @@ const COMPLETED = 'COMPLETED';
 const ACTIVE = 'ACTIVE';
 
 // example to do model
-let filter = ALL
+let filter = ACTIVE
 
 const toDoNumberOne = {
     content: 'Take out the rubbish bin',
-    isComplete: false
+    isComplete: true
 }
 
 const toDoNumberTwo = {
@@ -61,7 +61,18 @@ function createListItem (content, isChecked) {
 
 function renderList(){
     ul.innerHTML = ''
-    allToDos.forEach(function toDoListItem(toDo) {
+    const activeToDos = allToDos.filter(function (toDo){
+        //simplify this condition
+        if (toDo.isComplete === true) {
+            return false
+        } else {
+            return true
+        }
+    })
+    console.log(activeToDos);
+// Why is the filter not working?
+//What is JSON?
+    activeToDos.forEach(function toDoListItem(toDo) {
         createListItem(toDo.content, toDo.isComplete)
     })    
 }
