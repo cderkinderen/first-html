@@ -94,6 +94,21 @@ Form.onsubmit = function (event){
 
 select.onchange = function (event){
     filter = event.target.value;
+    //Crat a copy of th list, kp only lmnts that match filtr
+    allToDos.filter(function (todo) {
+        console.log(todo, filter);
+        if (filter === ACTIVE) {
+            return !todo.isComplete
+        }
+        if (filter === COMPLETED) {
+            return todo.isComplete
+        }
+        if (filter === ALL) {
+            return true
+        }
+        return false
+    })
+    //Rerendre th list
 }
 
 
